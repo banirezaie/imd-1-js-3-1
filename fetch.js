@@ -4,7 +4,7 @@
 //         return res.json()
 //     })
 //     .then(data => {
-//         console.log("DATA PARSED...")
+//         console.log("DATA PARSED...", data)
 //         console.log(data.ticker.price)
 //     })
 //     .catch(e => {
@@ -12,14 +12,15 @@
 //     })
 
 const fetchBitcoinPrice = async () => {
-  const res = await fetch("https://api.cryptonator.com/api/ticker/btc-usd");
-  const data = await res.json();
-  console.log(data.ticker.price);
-  //   try {
-  //     const res = await fetch("https://api.cryptonator.com/api/ticker/btc-usd");
-  //     const data = await res.json();
-  //     console.log(data.ticker.price);
-  //   } catch (e) {
-  //     console.log("SOMETHING WENT WRONG!!!", e);
-  //   }
+  // const res = await fetch("https://api.cryptonator.com/api/ticker/btc-usd");
+  // const data = await res.json();
+  // console.log(data.ticker.price);
+
+    try {
+      const res = await fetch("https://api.cryptonator.com/api/ticker/btc-usd");
+      const data = await res.json();
+      console.log(data.ticker.price);
+    } catch (e) {
+      console.log("SOMETHING WENT WRONG!!!", e);
+    }
 };

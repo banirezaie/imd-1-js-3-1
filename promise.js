@@ -1,27 +1,14 @@
 // THE CALLBACK VERSION
 // const fakeRequestCallback = (url, success, failure) => {
-//   const delay = Math.floor(Math.random() * 4500) + 500
+//   const delay = Math.floor(Math.random() * 4500) + 500;
 //   setTimeout(() => {
-//     if (delay > 4000) {
-//       failure("Connection Timeout :(")
+//     if (delay > 3000) {
+//       failure("Connection Timeout :(");
 //     } else {
-//       success(`Here is your fake data from ${url}`)
+//       success(`Here is your fake data from ${url}`);
 //     }
-//   }, delay)
-// }
-// THE PROMISE VERSION
-const fakeRequestPromise = url => {
-  return new Promise((resolve, reject) => {
-    const delay = Math.floor(Math.random() * 4500) + 500;
-    setTimeout(() => {
-      if (delay > 4000) {
-        reject("Connection Timeout :(");
-      } else {
-        resolve(`Here is your fake data from ${url}`);
-      }
-    }, delay);
-  });
-};
+//   }, delay);
+// };
 
 // fakeRequestCallback(
 //   "books.com/page1",
@@ -54,49 +41,64 @@ const fakeRequestPromise = url => {
 //   }
 // )
 
+
+// THE PROMISE VERSION
+const fakeRequestPromise = url => {
+  return new Promise((resolve, reject) => {
+    const delay = Math.floor(Math.random() * 4500) + 500;
+    setTimeout(() => {
+      if (delay > 4000) {
+        reject("Connection Timeout :(");
+      } else {
+        resolve(`Here is your fake data from ${url}`);
+      }
+    }, delay);
+  });
+};
+
 // SYNTAX KOLLI
-// fakeRequestPromise('/url').then(() => { }).then(() => { }).then(() => { }).catch(()=>{})
+// fakeRequestPromise("/url")
+//   .then(() => {})
+//   .then(() => {})
+//   .then(() => {})
+//   .catch(() => {});
 
 // fakeRequestPromise("yelp.com/api/coffee/page1")
 //   .then(() => {
-//     console.log("IT WORKED!!!!!! (page1)")
+//     console.log("IT WORKED!!!!!! (page1)");
 //     fakeRequestPromise("yelp.com/api/coffee/page2")
 //       .then(() => {
-//         console.log("IT WORKED!!!!!! (page2)")
+//         console.log("IT WORKED!!!!!! (page2)");
 //         fakeRequestPromise("yelp.com/api/coffee/page3")
 //           .then(() => {
-//             console.log("IT WORKED!!!!!! (page3)")
+//             console.log("IT WORKED!!!!!! (page3)");
 //           })
 //           .catch(() => {
-//             console.log("OH NO, ERROR!!! (page3)")
-//           })
+//             console.log("OH NO, ERROR!!! (page3)");
+//           });
 //       })
 //       .catch(() => {
-//         console.log("OH NO, ERROR!!! (page2)")
-//       })
+//         console.log("OH NO, ERROR!!! (page2)");
+//       });
 //   })
 //   .catch(() => {
-//     console.log("OH NO, ERROR!!! (page1)")
-//   })
+//     console.log("OH NO, ERROR!!! (page1)");
+//   });
 
 // THE CLEANEST OPTION WITH THEN/CATCH
 // RETURN A PROMISE FROM .THEN() CALLBACK SO WE CAN CHAIN!
 fakeRequestPromise("yelp.com/api/coffee/page1")
   .then(data => {
-    console.log("IT WORKED!!!!!! (page1)");
-    console.log(data);
+    console.log("IT WORKED!!!!!! (page1)", data);
     return fakeRequestPromise("yelp.com/api/coffee/page2");
   })
   .then(data => {
-    console.log("IT WORKED!!!!!! (page2)");
-    console.log(data);
+    console.log("IT WORKED!!!!!! (page2)", data);
     return fakeRequestPromise("yelp.com/api/coffee/page3");
   })
   .then(data => {
-    console.log("IT WORKED!!!!!! (page3)");
-    console.log(data);
+    console.log("IT WORKED!!!!!! (page3)", data);
   })
   .catch(err => {
-    console.log("OH NO, A REQUEST FAILED!!!");
-    console.log(err);
+    console.log("OH NO, A REQUEST FAILED!!!", err);
   });

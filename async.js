@@ -1,13 +1,15 @@
 // async function hello() {}
-
+// function hi() {
+//   return "hello hello";
+// }
 // const sing = async () => {
 //   return "la la la la";
 // };
 
 // const sing = async () => {
-//   //   throw new Error("UH OH");
-//   throw "OH NO, Problem";
-//   return "la la la la";
+  // throw new Error("UH OH");
+  // throw "OH NO, Problem";
+  // return "la la la la";
 // };
 
 // const login = async (username, password) => {
@@ -20,7 +22,7 @@
 //   throw "invalid pass";
 // };
 
-// login("asdf", "hi")
+// login("asfds", "hi")
 //   .then(msg => {
 //     console.log("logged in!");
 //     console.log(msg);
@@ -30,7 +32,12 @@
 //     console.log(err);
 //   });
 
-/* ========================= */
+/* =======================
+
+async 1- fetch (time consume) => async
+      2- you are using the exact keyword of "async"
+
+====================== */
 
 /* await */
 
@@ -101,30 +108,30 @@
 // try {
 //   abcd.log("asdf");
 // } catch (e) {
-//   console.log("we have an error");
+//   console.log("we have an error", e);
 // }
 
-const fakeRequest = url => {
-  return new Promise((resolved, reject) => {
-    const delay = Math.random() * 4500 + 500;
-    setTimeout(() => {
-      if (delay > 2000) {
-        reject("connection timeout");
-      } else {
-        resolved("here is your fake data:", url);
-      }
-    });
-  });
-};
+// const fakeRequest = url => {
+//   return new Promise((resolved, reject) => {
+//     const delay = Math.random() * 4500 + 500;
+//     setTimeout(() => {
+//       if (delay > 2000) {
+//         reject("connection timeout");
+//       } else {
+//         resolved("here is your fake data:", url);
+//       }
+//     });
+//   });
+// };
 
-async function makeTwoRequests() {
-  try {
-    let data1 = await fakeRequest("/page1");
-    console.log(data1);
-    let data2 = await fakeRequest("/page2");
-    console.log(data2);
-  } catch (e) {
-    console.log("caught an error!");
-    console.log("error is:", e);
-  }
-}
+// async function makeTwoRequests() {
+//   try {
+//     let data1 = await fakeRequest("/page1");
+//     console.log(data1);
+//     let data2 = await fakeRequest("/page2");
+//     console.log(data2);
+//   } catch (e) {
+//     console.log("caught an error!");
+//     console.log("error is:", e);
+//   }
+// }
